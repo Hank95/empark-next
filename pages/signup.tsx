@@ -6,7 +6,8 @@ type FormValues = {
   lastName: string;
   email: string;
 };
-const LoginPage: React.FC = () => {
+
+export default function Signup() {
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
 
@@ -19,5 +20,4 @@ const LoginPage: React.FC = () => {
       <input type="submit" />
     </form>
   );
-};
-export default LoginPage;
+}
