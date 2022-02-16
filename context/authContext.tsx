@@ -86,6 +86,7 @@ export default function AuthProvider({
 
   async function login(email: string, password: string) {
     let cred = await signInWithEmailAndPassword(auth, email, password);
+    console.log("cred", cred);
     let userDoc = await getDoc(doc(db, "users", cred.user.uid));
 
     setUserInfo({ ...userDoc.data(), id: cred.user.uid } as UserInfo);
