@@ -20,16 +20,20 @@ const LoggedInNav = () => {
           <a className="hover:bg-gray-200 p-2 rounded-lg">Directory</a>
         </Link>
         <div className="group-hover:block dropdown-menu absolute hidden h-auto">
-          <ul className="top-5 w-48 bg-white shadow px-6 py-8">
+          <ul className="top-6 w-48 bg-white shadow px-3 py-4">
             <li className="py-1">
-              <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer">
-                Member
-              </a>
+              <Link href="/directory/members">
+                <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer rounded-lg p-2 text-center">
+                  Members
+                </a>
+              </Link>
             </li>
             <li className="py-1">
-              <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer">
-                Recommended Contractors
-              </a>
+              <Link href="/directory/contractors">
+                <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer rounded-lg p-2 text-center">
+                  Recommended Contractors
+                </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -38,18 +42,18 @@ const LoggedInNav = () => {
         <Link href="/profile/details">
           <a className="hover:bg-gray-200 p-2 rounded-lg">Profile</a>
         </Link>
-        <div className="group-hover:block dropdown-menu absolute hidden h-auto">
-          <ul className="top-5 w-48 bg-white shadow px-6 py-8">
+        <div className="group-hover:block dropdown-menu absolute hidden h-auto right-0">
+          <ul className="top-5 w-48 bg-white shadow px-3 py-4">
             <li className="py-1">
               <Link href="/profile/details">
-                <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer">
+                <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer rounded-lg p-2 text-center">
                   Profile
                 </a>
               </Link>
             </li>
             <li className="py-1">
               <a
-                className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer"
+                className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer rounded-lg p-2 text-center"
                 onClick={() => logout()}
               >
                 Logout

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { useAuth } from "../context/authContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const Login: NextPage = () => {
@@ -9,7 +9,7 @@ const Login: NextPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
 
   const router = useRouter();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,6 +26,12 @@ const Login: NextPage = () => {
 
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      router.push("/");
+    }
+  }, [currentUser, router]);
 
   return (
     //   Login Page
