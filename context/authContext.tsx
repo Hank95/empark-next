@@ -29,6 +29,7 @@ interface AuthContextValue {
   logout: () => Promise<void>;
   forgotPassword: (email: string) => Promise<void>;
   resetPassword: (oobCode: string, newPassword: string) => Promise<void>;
+  loading: boolean;
 }
 
 interface UserInfo {
@@ -40,11 +41,13 @@ interface UserInfo {
   homeAddress1: string;
   homeAddress2: string;
   homePhone: string;
+  emPhone: string;
   lastName: string;
   mobilePhone: string;
   parkCottageName: string;
+  emAddress: string;
   state: string;
-  zip: string;
+  zipCode: string;
   id: string;
 }
 
@@ -66,6 +69,7 @@ export default function AuthProvider({
   const [currentUser, setCurrentUser] = useState(null);
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
   const usersCollectionRef = collection(db, "users");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user: any) => {
@@ -85,14 +89,17 @@ export default function AuthProvider({
   }, [currentUser]);
 
   async function login(email: string, password: string) {
+    setLoading(true);
     let cred = await signInWithEmailAndPassword(auth, email, password);
     console.log("cred", cred);
     let userDoc = await getDoc(doc(db, "users", cred.user.uid));
 
     setUserInfo({ ...userDoc.data(), id: cred.user.uid } as UserInfo);
+    setLoading(false);
   }
 
   async function signup(email: string, password: string) {
+    setLoading(true);
     // first find if input email matches approved email
     const emailDoc = await getDoc(doc(db, "emails", email));
 
@@ -103,7 +110,9 @@ export default function AuthProvider({
         admin: false,
       });
       setUserInfo(userDoc as unknown as UserInfo);
+      setLoading(false);
     } else {
+      setLoading(false);
       console.log("not authenticated");
     }
   }
@@ -131,6 +140,7 @@ export default function AuthProvider({
     logout,
     forgotPassword,
     resetPassword,
+    loading,
   };
   return <AuthContext.Provider value={value}> {children}</AuthContext.Provider>;
 }

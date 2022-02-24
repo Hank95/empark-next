@@ -35,15 +35,17 @@ const LoggedInNav = () => {
         </div>
       </li>
       <li className="group  relative dropdown  px-4   cursor-pointer font-bold text-base uppercase tracking-wide">
-        <Link href="/profile">
+        <Link href="/profile/details">
           <a className="hover:bg-gray-200 p-2 rounded-lg">Profile</a>
         </Link>
         <div className="group-hover:block dropdown-menu absolute hidden h-auto">
           <ul className="top-5 w-48 bg-white shadow px-6 py-8">
             <li className="py-1">
-              <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer">
-                Profile
-              </a>
+              <Link href="/profile/details">
+                <a className="block  font-bold text-base uppercase hover:bg-gray-200 cursor-pointer">
+                  Profile
+                </a>
+              </Link>
             </li>
             <li className="py-1">
               <a
