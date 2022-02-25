@@ -5,6 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { NextPage } from "next";
 import Head from "next/head";
 import { Layout } from "../../components/layout";
+import ContactCard from "../../components/contactCard";
 
 const Members: NextPage = () => {
   const { userInfo } = useAuth();
@@ -29,16 +30,7 @@ const Members: NextPage = () => {
       <main>
         <h1>Members</h1>
         {members.map((member) => (
-          <div key={member.id}>
-            <h2>{member.name}</h2>
-            <p>{member.email}</p>
-            <p>{member.phone}</p>
-            <p>{member.address1}</p>
-            <p>{member.address2}</p>
-            <p>{member.city}</p>
-            <p>{member.state}</p>
-            <p>{member.zipCode}</p>
-          </div>
+          <ContactCard key={member.id} member={member} />
         ))}
       </main>
     </Layout>

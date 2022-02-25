@@ -1,24 +1,11 @@
 import Link from "next/link";
-import Head from "next/head";
-import NavBar from "../../components/nav/navBar";
 import type { NextPage } from "next";
 import { useAuth } from "../../context/authContext";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Layout } from "../../components/layout";
 
 const Details: NextPage = () => {
   const { userInfo } = useAuth();
-  const router = useRouter();
 
-  // useEffect(() => {
-  //   // redirect to login if user is not logged in
-  //   if (!userInfo) {
-  //     router.push("/login");
-  //   }
-  // }, [userInfo, router]);
-
-  // funtion to format phone number from string to string with dashes
   const formatPhone = (phone: string) => {
     let phoneFormatted = phone.replace(/[^\d]/g, "");
     if (phoneFormatted.length === 10) {
