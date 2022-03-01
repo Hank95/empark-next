@@ -35,9 +35,9 @@ export default function ContactCard({ member }: { member: UserInfo }) {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full h-full ${
+      className={`flex flex-col items-center justify-center w-2/3 h-full mx-auto ${
         isClicked ? "bg-gray-100" : "bg-white"
-      } rounded-lg shadow-lg p-4 m-2`}
+      } rounded-lg shadow-lg p-4 m-2 hover:cursor-pointer`}
       onClick={() => setIsClicked(!isClicked)}
     >
       <h1 className="text-xl font-bold text-gray-800">
