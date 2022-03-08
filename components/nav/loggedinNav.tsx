@@ -5,12 +5,12 @@ const LoggedInNav = () => {
   const { currentUser, logout } = useAuth();
   return (
     <ul className="flex flex-row items-center justify-center space-x-3">
-      <li>
+      <li className="px-4   cursor-pointer font-bold text-base uppercase tracking-wide">
         <Link href="/about">
           <a className="hover:bg-gray-200 p-2 rounded-lg">About</a>
         </Link>
       </li>
-      <li>
+      <li className="px-4   cursor-pointer font-bold text-base uppercase tracking-wide">
         <Link href="/rules">
           <a className="hover:bg-gray-200 p-2 rounded-lg">Park Rules</a>
         </Link>

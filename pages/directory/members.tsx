@@ -70,24 +70,25 @@ const Members: NextPage = () => {
     ]);
   };
 
-  // when the user scrolls close to the bottom of the page, get more users
-  const handleScroll = () => {
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    if (scrollTop + clientHeight >= scrollHeight - 100) {
+  // I want infinate scroll to load more members when the user scrolls to the bottom of the page
+  const handleScroll = (e: any) => {
+    if (
+      e.target.scrollTop + e.target.clientHeight >=
+      e.target.scrollHeight - 100
+    ) {
       getMoreUsers();
     }
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if (searchTerm) {
+      searchMembers();
+    }
+  }, [searchTerm]);
 
   return (
     <Layout privateRoute={true} title="Members">
-      <main className="mb-auto">
+      <main className="mx-auto w-1/2">
         <h1>Members</h1>
         {/* Search bar */}
         <div className="flex flex-wrap justify-center">
@@ -105,7 +106,6 @@ const Members: NextPage = () => {
               placeholder="Search by first or last name"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <input type="submit" value="Search" />
           </form>
         </div>
         {members.map((member) => (

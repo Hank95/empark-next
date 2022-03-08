@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <nav className="sticky top-0 grid grid-cols-2 z-50">
       <Link href="/">
-        <a>
+        <a className="ml-5">
           <Image src="/logo.svg" alt="logo" width={200} height={100} />
         </a>
       </Link>
